@@ -12,6 +12,8 @@ To use the tool, you'll first need to create a 'Guest Issuer' application from [
 
 To generate a Guest token, type the commands below in a terminal:
 
+_Note for Mac/Linux users: add `sudo` before each of the `npm install` commands below._
+
 ```shell
 # Install the CLI
 npm install guestissuer -g
