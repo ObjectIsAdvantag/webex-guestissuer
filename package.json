@@ -1,0 +1,21 @@
+{
+  "name": "sparkguest",
+  "version": "0.5.1",
+  "description": "CLI to create JWT tokens and issue Webex Teams API access tokens for 'Permanent Guest'",
+  "bin": {
+    "sparkguest": "sparkguest"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "commander": "^2.12.1",
+    "debug": "^3.1.0",
+    "jsonwebtoken": "^8.1.0"
+  },
+  "keywords": [
+    "jwt",
+    "guest-issuer",
+    "webex-teams"
+  ],
+  "author": "Stève Sfartz <stsfartz@cisco.com>",
+  "license": "MIT"
+}
