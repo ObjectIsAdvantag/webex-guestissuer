@@ -10,7 +10,7 @@ const program = require('commander')
 program
     .description('reveals info contained in a JWT token')
     .option("-j, --jwt", "decrypts the JWT token (works with JWT issuer and issued tokens)")
-    .option("-s, --spark", "shows the Webex user identity (only work with JWT issued tokens)")
+    .option("-s, --access", "shows the Webex user identity behind a valid access token")
     .arguments('<token>')
     .action(function (token) {
 
@@ -21,10 +21,10 @@ program
         }
         debug('successfully collected token')
 
-        if (program.spark) {
-            // Ask spark for info
+        if (program.access) {
+            // Fetech info from Webex Teams API /people/me
             debug('got it: will ask Webex about this token')
-            showSparkInfo(token)
+            checkAccessToken(token)
             return
         }
 
@@ -37,8 +37,8 @@ program
         console.log('')
         console.log('  Examples:')
         console.log('')
-        console.log('    $ sparkguest verify --jwt 123456789.RRETEZT3T63362.987654321')
-        console.log('    $ sparkguest verify --spark 123456789.RRETEZT3T63362.987654321')
+        console.log('    $ guestissuer verify --jwt 123456789.RRETEZT3T63362.987654321')
+        console.log('    $ guestissuer verify --access 123456789.RRETEZT3T63362.987654321')
     })
 
 program.parse(process.argv)
@@ -72,7 +72,9 @@ function checkJWTtoken(token) {
 }
 
 
-function showSparkInfo(token) {
+// Invokes the /people/me resource from Webex Teams API
+// and displays info for the specified access token
+function checkAccessToken(token) {
     debug('contacting Webex API resource: /people/me')
 
     const axios = require('axios');

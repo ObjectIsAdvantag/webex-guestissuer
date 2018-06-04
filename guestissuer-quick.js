@@ -44,7 +44,7 @@ note that:\n\
         debug('successfully collected guest user info');
 
         // Forge issuer token
-        const GuestUtil = require('./sparkguest-util');
+        const GuestUtil = require('./guestissuer-util');
         const expiresInSeconds =  Math.round(Date.now()/1000) + 60; // Guest token will expire in 60 seconds
         const guestToken = GuestUtil.createGuestToken(issuer, secret, userid, username, expiresInSeconds);
         
@@ -56,8 +56,8 @@ note that:\n\
         console.log('')
         console.log('  Examples:')
         console.log('')
-        console.log('    $ sparkguest quick 123456789 "John Doe" -i "issuer_id" -s "secret"')
-        console.log('    $ ISSUER="issuer_id" SECRET="secret" sparkguest quick 123456789 "John Doe"')
+        console.log('    $ guestissuer quick 123456789 "John Doe" -i "issuer_id" -s "secret"')
+        console.log('    $ ISSUER="issuer_id" SECRET="secret" guestissuer quick 123456789 "John Doe"')
     })
 
 program.parse(process.argv)

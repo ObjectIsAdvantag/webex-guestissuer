@@ -10,8 +10,8 @@ const debug = require('debug')('guest')
 var program = require('commander')
 
 program
-    .version('v0.5.1')
-    .description('Utility to create "Guest" tokens and fetch access tokens for "Guest" of a Webex Teams "Guest Issuer" organization\n\
+    .version('v0.6.0')
+    .description('Utility to create JWT "Guest" tokens and fetch access tokens for "Permanent Guests" of a Webex Teams "Guest Issuer" organization\n\
   note that the "quick" command is a shortcut to typing "create" then "login" commands')
     .command('quick [-is] <user_id> <user_name>', 'returns a temporary access token for the specified "Guest" user and developer "Organization"', { isDefault: true })
     .command('create [-is] <user_id> <user_name>', 'creates a reusable JWT "issuer" token for the specified user and organization')
@@ -21,14 +21,14 @@ program
         console.log('')
         console.log('  Examples:')
         console.log('')
-        console.log('    $ sparkguest quick 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
+        console.log('    $ guestissuer quick 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
         console.log('      4234324.45435435.543543543')
         console.log('')
         console.log('    or without the shortcut:')
         console.log('')
-        console.log('    $ sparkguest create 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
+        console.log('    $ guestissuer create 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
         console.log('      12tre33.54343275.5456456745')
-        console.log('    $ sparkguest login "12tre33.54343275.5456456745"')
+        console.log('    $ guestissuer login "12tre33.54343275.5456456745"')
         console.log('      4234324.45435435.543543543')
     });
 

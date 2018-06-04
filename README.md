@@ -2,25 +2,25 @@
 
 'Guest Issuer' applications allow guests (aka, non Webex Teams users) to persistently use the Webex cloud platform through the Teams SDKs and Widgets. Check the [online documentation for details](https://developer.webex.com/guest-issuer.html).
 
-The `sparkguest` command line interface (CLI) helps generate Guest tokens for 'Guest Issuer' applications.
+The `guestissuer` command line interface (CLI) helps generate Guest tokens for 'Guest Issuer' applications.
 
 To use the tool, you'll first need to create a 'Guest Issuer' application from [Webex for Developers portal](https://developer.webex.com/add-guest.html), and fetch your 'Guest Issuer' application's identifier and secret.
-**Note that you need a Webex Teams paying account to create 'Guest Issuer' application.**
+**Note that you need a Webex Teams PAYING account to create 'Guest Issuer' applications.**
 
 
-## QuickStart
+## Quick Start
 
-To generate a Guest token, type the commands below in a terminal
+To generate a Guest token, type the commands below in a terminal:
 
 ```shell
 # Install the CLI
-npm install sparkguest -g
+npm install guestissuer -g
 
-# Create a Guest token with the specified user info (expires in 90 minutes by default)
-sparkguest create <userId> <userName> -i <issuerAppId> -s <issuerAppSecret> [-d <expirationDelay>]
+# Create a JWT Guest token with the specified user info (expires in 90 minutes by default)
+guestissuer create <userId> <userName> -i <issuerAppId> -s <issuerAppSecret> [-d <expirationDelay>]
 
 # Fetch an access token for the Guest user (valid for 6 hours)
-sparkguest login <guestToken>
+guestissuer login <guestToken>
 ```
 
 
@@ -28,28 +28,28 @@ You can even get there quicker with the `quick` command:
 
 ```shell
 # Install the CLI
-npm install sparkguest -g
+npm install guestissuer -g
 
-# Create a Guest token, and fetch an access token right away (valud for 6 hours)
-# Here, the guest token is volatile (neither stored, not returned)
-sparkguest quick <userId> <userName> -i <issuerAppId> -s <issuerAppSecret>
+# Create a Guest token, and fetch an access token right away (valid for 6 hours)
+# Here, the JWT guest token is volatile (neither stored, not returned)
+guestissuer quick <userId> <userName> -i <issuerAppId> -s <issuerAppSecret>
 ```
 
 
 
 ## Detailled instructions
 
-To install the `sparkguest` CLI, type:
+To install the `guestissuer` CLI, type:
 
     ```shell
-    npm install sparkguest -g
+    npm install guestissuer -g
     ```
 
 
-To create a 'Guest token' for a 'Guest' user (non Webex Teams users), type:
+To create a JWT 'Guest token' for a 'Guest' user (non Webex Teams users), type:
 
     ```shell
-    sparkguest [create] <userId> <userName> -i <issuerAppId> -s <issuerAppSecret> [-d <expirationDelay>]
+    guestissuer [create] <userId> <userName> -i <issuerAppId> -s <issuerAppSecret> [-d <expirationDelay>]
     ```
 
     Where:
@@ -61,7 +61,7 @@ To create a 'Guest token' for a 'Guest' user (non Webex Teams users), type:
     Example (with verbose debugging info):
 
     ```shell
-    DEBUG=guest*  sparkguest create "123" "Stève" -i Y2lz...VzLMDY -s AMx/FPI...NABzD6o=
+    DEBUG=guest*  guestissuer create "123" "Stève" -i Y2lz...VzLMDY -s AMx/FPI...NABzD6o=
         guest arguments successfully checked +0ms
         guest successfully built Guest token: BDmh0rgbcVMfpklnyWfurxX5Y... +59ms
         guest Guest token is valid till XXXXX +1ms        
@@ -70,13 +70,13 @@ To create a 'Guest token' for a 'Guest' user (non Webex Teams users), type:
 
     Note that:
         - instead of passing them through command line parameters, you can alternatively specify the 'Guest Issuer Application'  identifier and secret via environment variables `ISSUER` and `SECRET` 
-        - the `create` command is the default's for sparkguest. You can omit it as in `sparkguest "123" "Stève" -i Y2lz...VzLMDY -s AMx/FPI...NABzD6o=`
+        - the `create` command is the default's for guestissuer. You can omit it as in `guestissuer "123" "Stève" -i Y2lz...VzLMDY -s AMx/FPI...NABzD6o=`
         
 
-Once you've got a 'Guest token', you'll need to fetch an access token (valid for 6 hours).
+Once you've got a JWT 'Guest token', you'll need to fetch an access token (valid for 6 hours).
 
     ```shell
-    sparkguest login <guestToken>
+    guestissuer login <guestToken>
     ```
 
     Note that:
@@ -87,14 +87,14 @@ Once you've got a 'Guest token', you'll need to fetch an access token (valid for
 To quickly check the data contained in a JWT token (guest or access token):
 
     ```shell
-    sparkguest verify --jwt <token>
+    guestissuer verify --jwt <token>
     ```
 
 
 To quickly the Person behind an access token (equivalent tp a GET /people/me request):
 
     ```shell
-    sparkguest verify --spark <access_token>
+    guestissuer verify --access <access_token>
     ```
 
 
@@ -111,7 +111,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiU3TDqHZlIiwiaXN
 
 Note that the Guest token also has a JWT format.
 If you decode it, you'll discover its contents.
-Go to https://jwt.io to decode it, or simply type: `sparkguest verfiy --jwt <guest_token>`
+Go to https://jwt.io to decode it, or simply type: `guestissuer verfiy --jwt <guest_token>`
 
 **Decoded Header Section**
 
@@ -140,7 +140,7 @@ These tokens are generated from 'Guest tokens' by invoking Webex Teams API 's /j
 They give access to the Webex Teams API, SDKs and Widgets under the identity of the 'Guest' user.
 
 To test an access token for a user, reach to the [GET /people/me](https://developer.webex.com/endpoint-people-me-get.html) resource, paste the access token and run the request.
-Alternatively, you can type: `sparkguest verify --spark <access_token>`
+Alternatively, you can type: `guestissuer verify --access <access_token>`
 
     Example of Person details for an access token attached to a Guest user:
 
@@ -162,7 +162,7 @@ Alternatively, you can type: `sparkguest verify --spark <access_token>`
 
 Note that the issued token also has a JWT format.
 If you decode it, you'll discover its structure.
-Go to https://jwt.io, or simply type: `sparkjwt verify --jwt <token>`
+Go to https://jwt.io, or simply type: `guestissuer verify --jwt <token>`
 
 
 **Decoded Header Section**

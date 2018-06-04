@@ -17,20 +17,20 @@ program
         // Check issuer token is present       
         if (!guestToken) {
             console.error('missing guest token, exiting...')
-            console.error("you can generate a guest token with command: 'sparkguest create'")
+            console.error("you can generate a guest token with command: 'guestissuer create'")
             process.exit(1)
         }
         debug('successfully collected guest token')
 
          // Request access token
-         const GuestUtil = require('./sparkguest-util')
+         const GuestUtil = require('./guestissuer-util')
          GuestUtil.fetchToken(guestToken)
     })
     .on('--help', function () {
         console.log('')
         console.log('  Example:')
         console.log('')
-        console.log('    $ sparkguest login "12tre33.54343275.5456456745"')
+        console.log('    $ guestissuer login "12tre33.54343275.5456456745"')
     });
 
 program.parse(process.argv)

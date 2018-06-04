@@ -1,15 +1,15 @@
 {
-  "name": "sparkguest",
-  "version": "0.5.1",
-  "description": "CLI to create JWT tokens and issue Webex Teams API access tokens for 'Permanent Guest'",
+  "name": "guestissuer",
+  "version": "0.6.0",
+  "description": "CLI to create JWT tokens and Webex Teams API access tokens for 'Permanent Guest'",
   "bin": {
-    "sparkguest": "sparkguest"
+    "guestissuer": "guestissuer"
   },
   "dependencies": {
-    "axios": "^0.17.1",
-    "commander": "^2.12.1",
+    "axios": "^0.18.0",
+    "commander": "^2.15.1",
     "debug": "^3.1.0",
-    "jsonwebtoken": "^8.1.0"
+    "jsonwebtoken": "^8.2.2"
   },
   "keywords": [
     "jwt",

@@ -61,7 +61,7 @@ program
         const expiresInSeconds =  Math.round(Date.now()/1000) + delay;
 
         // Forge issuer token
-        const GuestUtil = require('./sparkguest-util')
+        const GuestUtil = require('./guestissuer-util')
         const issuerToken = GuestUtil.createGuestToken(issuer, secret, id, name, expiresInSeconds)
 
         // Show token
@@ -72,8 +72,8 @@ program
         console.log('')
         console.log('  Examples:')
         console.log('')
-        console.log('    $ sparkguest create 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
-        console.log('    $ ISSUER="issuer_id" SECRET="issuer_secret" sparkguest create 123456789 "John Doe"')
+        console.log('    $ guestissuer create 123456789 "John Doe" -i "issuer_id" -s "issuer_secret"')
+        console.log('    $ ISSUER="issuer_id" SECRET="issuer_secret" guestissuer create 123456789 "John Doe"')
     })
 
 program.parse(process.argv)
