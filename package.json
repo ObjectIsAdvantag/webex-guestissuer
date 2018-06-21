@@ -1,6 +1,6 @@
 {
   "name": "guestissuer",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "CLI to create JWT tokens and Webex Teams API access tokens for 'Permanent Guest'",
   "bin": {
     "guestissuer": "guestissuer"
