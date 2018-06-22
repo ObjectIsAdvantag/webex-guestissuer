@@ -113,7 +113,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiU3TDqHZlIiwiaXN
 
 Note that the Guest token also has a JWT format.
 If you decode it, you'll discover its contents.
-Go to https://jwt.io to decode it, or simply type: `guestissuer verfiy --jwt <guest_token>`
+Go to https://jwt.io to decode it, or simply type: `guestissuer verify --jwt <guest_token>`
 
 **Decoded Header Section**
 
