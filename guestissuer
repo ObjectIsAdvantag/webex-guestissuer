@@ -10,7 +10,7 @@ const debug = require('debug')('guest')
 var program = require('commander')
 
 program
-    .version('v0.6.1')
+    .version('v0.6.2')
     .description('Utility to create JWT "Guest" tokens and fetch access tokens for "Permanent Guests" of a Webex Teams "Guest Issuer" organization\n\
   note that the "quick" command is a shortcut to typing "create" then "login" commands')
     .command('quick [-is] <user_id> <user_name>', 'returns a temporary access token for the specified "Guest" user and developer "Organization"', { isDefault: true })

@@ -1,20 +1,20 @@
 {
   "name": "guestissuer",
-  "version": "0.6.1",
-  "description": "CLI to create JWT tokens and Webex Teams API access tokens for 'Permanent Guest'",
+  "version": "0.6.2",
+  "description": "CLI to create JWT tokens and Webex API access tokens for 'Permanent Guest'",
   "bin": {
     "guestissuer": "guestissuer"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "commander": "^2.15.1",
-    "debug": "^3.1.0",
-    "jsonwebtoken": "^8.2.2"
+    "axios": "^0.19.0",
+    "commander": "^3.0.0",
+    "debug": "^4.1.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "keywords": [
     "jwt",
     "guest-issuer",
-    "webex-teams"
+    "webex"
   ],
   "author": "Stève Sfartz <stsfartz@cisco.com>",
   "license": "MIT"
