@@ -1,11 +1,11 @@
-# CLI to generate JWT and access tokens for Webex Teams 'Permanent Guest'
+# CLI to generate JWT and access tokens for Webex 'Permanent Guest'
 
-'Guest Issuer' applications allow guests (aka, non Webex Teams users) to persistently use the Webex cloud platform through the Teams SDKs and Widgets. Check the [online documentation for details](https://developer.webex.com/guest-issuer.html).
+'Guest Issuer' applications allow guests (aka, non Webex users) to persistently use the Webex cloud platform through the Webex SDKs and Widgets. Check the [online documentation for details](https://developer.webex.com/guest-issuer.html).
 
 The `guestissuer` command line interface (CLI) helps generate Guest tokens for 'Guest Issuer' applications.
 
 To use the tool, you'll first need to create a 'Guest Issuer' application from [Webex for Developers portal](https://developer.webex.com/add-guest.html), and fetch your 'Guest Issuer' application's identifier and secret.
-**Note that you need a Webex Teams PAYING account to create 'Guest Issuer' applications.**
+**Note that you need a Webex PAYING account to create 'Guest Issuer' applications.**
 
 
 ## Quick Start
@@ -48,7 +48,7 @@ To install the `guestissuer` CLI, type:
     ```
 
 
-To create a JWT 'Guest token' for a 'Guest' user (non Webex Teams users), type:
+To create a JWT 'Guest token' for a 'Guest' user (non Webex users), type:
 
     ```shell
     guestissuer [create] <userId> <userName> -i <issuerAppId> -s <issuerAppSecret> [-d <expirationDelay>]
@@ -56,7 +56,7 @@ To create a JWT 'Guest token' for a 'Guest' user (non Webex Teams users), type:
 
     Where:
         - `userId` is a user identifier unique to your 'Guest Issuer'. This identifier is used by the Webex cloud platform to persist user data among sessions. Understand: if another token gets generated with the same 'userId', the Guest user interacting with that token will see Spaces, Messages, and inherit Memberships from previous Webex interactions for this 'userId',
-        - `userName` is used to identify the user in Webex Teams spaces,
+        - `userName` is used to identify the user in Webex spaces,
         - `expirationDelay` should be specified in seconds, defaults to 5400s (90min) from now.
         - the `issuerAppId` and `issuerAppSecret` tie to the 'Guest Issuer Application' created from the [Webex for Developers portal](https://developer.webex.com/add-guest.html).
     
@@ -82,7 +82,7 @@ Once you've got a JWT 'Guest token', you'll need to fetch an access token (valid
     ```
 
     Note that:
-       - the command uses the Webex Teams API 's /jwt/login endpoint behind the scene.
+       - the command uses the Webex API 's /jwt/login endpoint behind the scene.
        - the fetched accessed token is valid for 6 hours
 
 
@@ -138,8 +138,8 @@ Go to https://jwt.io to decode it, or simply type: `guestissuer verify --jwt <gu
 
 ### Retreiving API access tokens for 'Guest' users 
 
-These tokens are generated from 'Guest tokens' by invoking Webex Teams API 's /jwt/login endpoint
-They give access to the Webex Teams API, SDKs and Widgets under the identity of the 'Guest' user.
+These tokens are generated from 'Guest tokens' by invoking Webex API 's /jwt/login endpoint
+They give access to the Webex API, SDKs and Widgets under the identity of the 'Guest' user.
 
 To test an access token for a user, reach to the [GET /people/me](https://developer.webex.com/endpoint-people-me-get.html) resource, paste the access token and run the request.
 Alternatively, you can type: `guestissuer verify --access <access_token>`
@@ -197,9 +197,9 @@ Go to https://jwt.io, or simply type: `guestissuer verify --jwt <token>`
 
 ### Tip : Adding a 'Permanent Guest' to a space
 
-The general use case for "Permanent Guest" is to call an existing Webex Teams user, and create a space and add Bots or Webex Teams users to the space.
+The general use case for "Permanent Guest" is to call an existing Webex user, and create a space and add Bots or Webex users to the space.
 
 Sometimes, you may be interested to add a 'Permanent Guest' to an existing space (or newly created space).
 You'll hit a difficulty here since 'Permanent Guest' cannot be reached via their Webex email.
 Simply use the `personId` in the [POST /membership - Create a membership](https://developer.webex.com/endpoint-memberships-post.html) resource.
-Note that you can get the Webex Teams `personId` of a "Permanent Guest" through a [GET /people/me](https://developer.webex.com/endpoint-people-me-get.html) request issued with the "Permanent Guest" access token.
+Note that you can get the Webex `personId` of a "Permanent Guest" through a [GET /people/me](https://developer.webex.com/endpoint-people-me-get.html) request issued with the "Permanent Guest" access token.

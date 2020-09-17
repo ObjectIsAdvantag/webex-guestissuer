@@ -22,7 +22,7 @@ program
         debug('successfully collected token')
 
         if (program.access) {
-            // Fetech info from Webex Teams API /people/me
+            // Fetch info from Webex API /people/me
             debug('got it: will ask Webex about this token')
             checkAccessToken(token)
             return
@@ -72,7 +72,7 @@ function checkJWTtoken(token) {
 }
 
 
-// Invokes the /people/me resource from Webex Teams API
+// Invokes the /people/me resource from Webex API
 // and displays info for the specified access token
 function checkAccessToken(token) {
     debug('contacting Webex API resource: /people/me')

@@ -8,7 +8,7 @@ const debug = require('debug')('guest:login')
 const program = require('commander')
 
 program
-    .description('fetch a new access token for Webex Teams API, SDKs and Widgets.\n\
+    .description('fetch a new access token for Webex API, SDKs and Widgets.\n\
   note that:\n\
     - the user identity is inferred from the specified "Guest" token\n\
     - the returned access token is only valid for 6 hours')
