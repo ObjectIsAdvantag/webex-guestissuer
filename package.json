@@ -6,7 +6,7 @@
     "guestissuer": "guestissuer"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "commander": "^3.0.0",
     "debug": "^4.1.1",
     "jsonwebtoken": "^8.5.1"
